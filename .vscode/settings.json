@@ -1,0 +1,12 @@
+{
+    "jupyter.jupyterServerType": "local",
+    "python.pythonPath": "tf\\Scripts\\python.exe",
+    "python.analysis.typeCheckingMode": "basic",
+    "markdownlint.config": {
+        "no-duplicate-heading": {"allow_different_nesting": true},//允许相同标题
+        "first-line-heading": false//首行规则在 ipynb 很烦人
+    },
+    "editor.codeActionsOnSave": {
+        "source.fixAll.markdownlint": true //保存是自动格式化
+    },
+}
