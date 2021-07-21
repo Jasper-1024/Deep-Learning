@@ -48,7 +48,7 @@ model = NaiveSequential([
 assert len(model.weights) == 4
 
 
-class BatchGenerator:  #生成器 迭代处理 mnist 数据
+class BatchGenerator:  #生成器 处理 mnist 数据返回每次训练需要的 mnist 数据s
     def __init__(self, images, labels, batch_size=128):
         self.index = 0
         self.images = images
@@ -62,15 +62,15 @@ class BatchGenerator:  #生成器 迭代处理 mnist 数据
         return images, labels
 
 
-def one_training_step(model, images_batch, labels_batch):#一次训练
+def one_training_step(model, images_batch, labels_batch):  #一次训练
     with tf.GradientTape() as tape:
-        predictions = model(images_batch)
+        predictions = model(images_batch)  #计算预测值
         per_sample_losses = tf.keras.losses.sparse_categorical_crossentropy(
-            labels_batch, predictions)
-        average_loss = tf.reduce_mean(per_sample_losses)
-    gradients = tape.gradient(average_loss, model.weights)
-    update_weights(gradients, model.weights)
-    return average_loss
+            labels_batch, predictions)  #计算每个样本的损失
+        average_loss = tf.reduce_mean(per_sample_losses)  #计算平均损失
+    gradients = tape.gradient(average_loss, model.weights)  #
+    update_weights(gradients, model.weights)  #更新权重
+    return average_loss  #返回平均的损失
 
 
 # learning_rate = 1e-3
@@ -84,19 +84,19 @@ from tensorflow.keras import optimizers
 optimizer = optimizers.SGD(learning_rate=1e-3)
 
 
-def update_weights(gradients, weights):#更新权重
+def update_weights(gradients, weights):  #更新权重
     optimizer.apply_gradients(zip(gradients, weights))
 
 
-def fit(model, images, labels, epochs, batch_size=128):#训练
-    for epoch_counter in range(epochs):
-        print('Epoch %d' % epoch_counter)
-        batch_generator = BatchGenerator(images, labels)
+def fit(model, images, labels, epochs, batch_size=128):  #训练
+    for epoch_counter in range(epochs):  #epochs个轮次
+        print('Epoch %d' % epoch_counter)  #打印当前训练的轮次
+        batch_generator = BatchGenerator(images, labels)  #训练数据获取
         for batch_counter in range(len(images) // batch_size):
-            images_batch, labels_batch = batch_generator.next()
-            loss = one_training_step(model, images_batch, labels_batch)
+            images_batch, labels_batch = batch_generator.next()  #本次训练数据
+            loss = one_training_step(model, images_batch, labels_batch)  #一次训练
             if batch_counter % 100 == 0:
-                print('loss at batch %d: %.2f' % (batch_counter, loss))
+                print('loss at batch %d: %.2f' % (batch_counter, loss))  # 打印损失
 
 
 from keras.datasets import mnist
