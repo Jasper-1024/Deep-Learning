@@ -1,0 +1,157 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the README at:
+// https://github.com/microsoft/vscode-dev-containers/tree/v0.202.5/containers/python-3
+{
+	"name": "tf",
+	"runArgs": [
+		"--name",
+		"tf",
+		"--gpus",
+		"all",
+	],
+	"build": {
+		"dockerfile": "Dockerfile",
+		"context": "..",
+		"args": {
+			// Update 'VARIANT' to pick a Python version: 3, 3.10, 3.9, 3.8, 3.7, 3.6
+			// Append -bullseye or -buster to pin to an OS version.
+			// Use -bullseye variants on local on arm64/Apple Silicon.
+			// "VARIANT": "3.10-bullseye",
+			// Options
+			// "NODE_VERSION": "none"
+		}
+	},
+	// Set *default* container specific settings.json values on container create.
+	"settings": {
+		//jsonc 设置
+		"[json]": {
+			"editor.defaultFormatter": "esbenp.prettier-vscode"
+		},
+		"files.associations": {
+			"*.json": "jsonc"
+		},
+		"[jsonc]": {
+			"editor.defaultFormatter": "vscode.json-language-features"
+		}, //窗口缩放
+		"editor.mouseWheelZoom": true, //鼠标缩放
+		"editor.fontFamily": "'menlo'", //字体
+		"files.maxMemoryForLargeFilesMB": 16384, //最大内存
+		//联机服务
+		"telemetry.telemetryLevel": "off", //禁用统计
+		//SSH
+		"remote.SSH.showLoginTerminal": true,
+		"remote.SSH.remotePlatform": {
+			"proxy": "linux",
+			"main": "windows"
+		}, //自然语言搜索
+		"diffEditor.ignoreTrimWhitespace": false, //控制在差异编辑器中是否把前导空格或尾随空格的改动显示为差异
+		"vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+		"editor.suggestSelection": "first",
+		//markdown
+		"[markdown]": {
+			"editor.defaultFormatter": "yzhang.markdown-all-in-one"
+		},
+		"markdownlint.config": {
+			"no-duplicate-heading": {
+				"allow_different_nesting": true
+			}, //允许相同标题
+			"first-line-heading": false, //首行规则在 ipynb 很烦人
+			// "blank_lines": false, //文件末尾不必必有空行
+		},
+		"editor.codeActionsOnSave": {
+			"source.fixAll.markdownlint": true //保存是自动格式化
+		},
+		//git
+		"git.alwaysShowStagedChangesResourceGroup": true,
+		"git.fetchOnPull": true,
+		"git.enableSmartCommit": true,
+		"git.confirmEmptyCommits": false,
+		"git.allowForcePush": true,
+		"git.showPushSuccessNotification": true,
+		"git.allowNoVerifyCommit": true,
+		"git.alwaysSignOff": true,
+		"git.supportCancellation": true,
+		"gitlens.hovers.currentLine.over": "line",
+		"explorer.confirmDelete": false,
+		"git.autofetch": true,
+		//Python
+		"python.languageServer": "Pylance",
+		"python.formatting.provider": "yapf",
+		"python.analysis.completeFunctionParens": true,
+		"python.autoComplete.extraPaths": [
+			"python"
+		],
+		"python.analysis.extraPaths": [
+			"python",
+		],
+		"python.analysis.useImportHeuristic": true, //消除pylance 对子目录引用包提示错误
+		"workbench.editor.untitled.hint": "hidden",
+		"workbench.colorTheme": "Default Dark+",
+		"notebook.cellToolbarLocation": {
+			"default": "right",
+			"jupyter-notebook": "right"
+		},
+		"workbench.editorAssociations": {
+			"*.ipynb": "jupyter-notebook",
+			"*.dat": "default",
+			"*.md": "default",
+			"*.csv": "default"
+		},
+		"python.analysis.typeCheckingMode": "basic",
+		"editor.inlineSuggest.enabled": true,
+		"[yaml]": {
+			"editor.defaultFormatter": "esbenp.prettier-vscode"
+		},
+		//copilot 设置
+		"github.copilot.enable": {
+			"*": true,
+			"yaml": false,
+			"plaintext": true,
+			"markdown": true,
+			"python": true
+		},
+		//jupyter
+		"notebook.cellFocusIndicator": "border",
+		"notebook.showFoldingControls": "always",
+		"notebook.output.textLineLimit": 50,
+		"notebook.consolidatedRunButton": true,
+		"notebook.cellToolbarVisibility": "hover",
+		"notebook.outline.showCodeCells": true,
+		"security.workspace.trust.untrustedFiles": "open",
+		"markdown-preview-enhanced.chromePath": "C:\\Program Files\\Chromium\\Application\\chrome.exe",
+		"[javascript]": {
+			"editor.defaultFormatter": "vscode.typescript-language-features"
+		},
+		"jupyter.askForKernelRestart": false,
+		"jupyter.experimental.debugging": true,
+		"workbench.enableExperiments": false,
+		"better-comments.highlightPlainText": true,
+		"autoDocstring.includeName": true,
+		"window.zoomLevel": 0.5,
+	},
+	// Add the IDs of extensions you want installed when the container is created.
+	"extensions": [
+		"github.copilot",
+		"ms-toolsai.jupyter",
+		"ms-toolsai.jupyter-keymap",
+		"magicstack.magicpython",
+		"ms-python.python",
+		"ms-python.vscode-pylance",
+		"njpwerner.autodocstring",
+		"donjayamanne.python-extension-pack",
+		"frhtylcn.pythonsnippets",
+		"njqdev.vscode-python-typehint",
+		"mechatroner.rainbow-csv",
+		"visualstudioexptteam.vscodeintellicode",
+		"yzhang.markdown-all-in-one",
+		"eamodio.gitlens",
+		
+	],
+	// Use 'postCreateCommand' to run commands after the container is created.
+	"postCreateCommand": "sudo pip3 install -r requirements.txt",
+	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+	// "forwardPorts": [],
+	// Use 'postCreateCommand' to run commands after the container is created.
+	// "postCreateCommand": "pip3 install --user -r requirements.txt",
+	// Comment out connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
+	"remoteUser": "user"
+}

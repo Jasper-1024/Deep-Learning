@@ -1,6 +1,6 @@
 {
     "jupyter.jupyterServerType": "local",
-    "python.pythonPath": "tf\\Scripts\\python.exe",
+    "python.pythonPath": "/bin/python",
     "python.analysis.typeCheckingMode": "basic",
     "markdownlint.config": {
         "no-duplicate-heading": {"allow_different_nesting": true},//允许相同标题
