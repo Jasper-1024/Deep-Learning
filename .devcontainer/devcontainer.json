@@ -86,10 +86,6 @@
 		"python.analysis.useImportHeuristic": true, //消除pylance 对子目录引用包提示错误
 		"workbench.editor.untitled.hint": "hidden",
 		"workbench.colorTheme": "Default Dark+",
-		"notebook.cellToolbarLocation": {
-			"default": "right",
-			"jupyter-notebook": "right"
-		},
 		"workbench.editorAssociations": {
 			"*.ipynb": "jupyter-notebook",
 			"*.dat": "default",
@@ -109,13 +105,6 @@
 			"markdown": true,
 			"python": true
 		},
-		//jupyter
-		"notebook.cellFocusIndicator": "border",
-		"notebook.showFoldingControls": "always",
-		"notebook.output.textLineLimit": 50,
-		"notebook.consolidatedRunButton": true,
-		"notebook.cellToolbarVisibility": "hover",
-		"notebook.outline.showCodeCells": true,
 		"security.workspace.trust.untrustedFiles": "open",
 		"markdown-preview-enhanced.chromePath": "C:\\Program Files\\Chromium\\Application\\chrome.exe",
 		"[javascript]": {
