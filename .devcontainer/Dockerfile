@@ -1,4 +1,4 @@
-FROM tensorflow/tensorflow:2.6.1-gpu
+FROM tensorflow/tensorflow:2.7.1-gpu
 LABEL maintainer="JS"
 
 # 无需等待用户输入

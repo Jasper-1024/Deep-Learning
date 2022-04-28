@@ -10,4 +10,5 @@ debugpy==1.5.1
 decorator==5.1.0
 ipykernel==6.5.0
 ipython==7.29.0
+matplotlib==3.5.1
 
