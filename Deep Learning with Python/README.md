@@ -1,6 +1,6 @@
 # Deep Learning with Python, Second Edition
 
-[Deep Learning with Python, Second Edition](https://livebook.manning.com/book/deep-learning-with-python-second-edition/) 个人不完全翻译版.
+[Deep Learning with Python, Second Edition](https://livebook.manning.com/book/deep-learning-with-python-second-edition/) Python深度学习 第二版 个人不完全翻译版.
 
 特点
 
